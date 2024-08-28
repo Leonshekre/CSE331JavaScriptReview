@@ -29,8 +29,16 @@ export const fastFib = (n: number): FibPair => {
   // TODO: implement this in problem 1
   if (n <= 0) {
     throw new Error();
+  } else if (n == 1) {
+    const fibPair1: FibPair = {curFib: 1, prevFib: 0};
+    return fibPair1;
+  } else {
+    const pastFibPair = fastFib(n - 1);
+    const newCur = pastFibPair.curFib + pastFibPair.prevFib;
+    const newPrev = pastFibPair.curFib;
+    const fibPair2: FibPair = {curFib: newCur, prevFib: newPrev};
+    return fibPair2;
   }
-  throw new Error(`fastFib(${n}) is not yet implemented`);
 };
 
 
